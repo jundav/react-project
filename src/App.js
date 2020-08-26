@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/navigation/Navbar';
+import ProductCardDeck from './components/product/ProductCardDeck';
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Accessoarer from './views/Accessoarer';
+import Kläder from './views/Kläder';
+import Skor from './views/Skor';
+import ProductView from './views/ProductView';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  return ( 
+
+  <BrowserRouter>
+    <Navbar />   
+
+       <Switch>
+         <Route path="/" exact component={ProductCardDeck}/>
+         <Route path="/products/:id" exact component={ProductView}/>
+         <Route path="/accessoarer" exact component={Accessoarer}/>
+         <Route path="/clothes" exact component={Kläder}/>
+         <Route path="/shoes" exact component={Skor} /> 
+       </Switch>       
+    
+  </BrowserRouter>     
+  
+    
   );
 }
 
 export default App;
+
+
+
+
+
+
+    
+  
+   
